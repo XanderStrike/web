@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Basic grid from w3schools of all things */
+    * {
+        box-sizing: border-box;
+    }
+    .row::after {
+        content: "";
+        clear: both;
+        display: block;
+    }
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+        margin: 15px;
+        width: 100%;
+        background-color: #ccffff;
+    }
+    @media only screen and (min-width: 768px) {
+        .col-1 {
+          width: 45%;
+        }
+        .col-2 {
+          width: 45%;
+        }
+    }
+
+    .wow {
+      display: block;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="wow"></div>
+
+  <h1>Simple Responsive Demo</h1>
+
+  <div class="row">
+    <div class="col-1">
+      <h1>Column 1</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <div class="col-2">
+      <h1>Column 2</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+  <script>
+    var words = [
+      'wow',
+      'wow',
+      'wow',
+      'wow',
+      'wow',
+      'such responsive',
+      'such responsive',
+      'such responsive',
+      'such responsive',
+      'made on macOS',
+      'steve jobs',
+      'pivot',
+      'mobile first',
+      'who needs native',
+      'responsive design',
+      'have you heard of my startup',
+      '1 billion valuation',
+      'the uber of responsive design',
+      'its good but change the color',
+      'ducking',
+      '"random number in jquery"',
+      'the bay',
+      'have we talked to the stakeholders',
+      'customers will love this',
+      'we got some great feedback',
+      'how does it look on mobile',
+      'is there a node module',
+      'is it responsive?',
+      'media queries',
+      'min-width',
+      'content is like water',
+      'progressive enhancement',
+      'RWD',
+      'twelve columns',
+      'iPhone',
+      'viewport',
+      'i only test in chrome',
+      'the desktop is dead'
+    ]
+
+    $(window).resize(function() {
+      amaze($('.wow'));
+    });
+
+    function amaze(div) {
+      div.css('bottom', Math.floor(Math.random() * $(window).height()).toString() + 'px');
+      div.css('left', Math.floor(Math.random() * $(window).width() - 100).toString() + 'px');
+      div.css('font-size', Math.floor(Math.random() * 100 + 25).toString() + 'px');
+      div.css('color', getRandomColor());
+      div.css('transform', 'rotate(' + (Math.floor(Math.random() * 90) - 45).toString() + 'deg)');
+      div.html(words[Math.floor(Math.random() * words.length)]);
+    }
+
+    // http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+  </script>
+</body>
+</html>
+

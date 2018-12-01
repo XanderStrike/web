@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Irritating Video Player&trade;</title>
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    video {
+      max-width: 100%;
+      background-color: #000;
+    }
+
+    .ipsum {
+      font-size: 24px;
+      line-height: 1.5;
+    }
+
+    .irritating {
+      width: 600px;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Irritating Video Player&trade;</h1>
+  <div class="irritating-container">
+    <video src="annoying_video.mp4" autoplay controls></video>
+  </div>
+
+  <div class="ipsum">
+    <h3>Overview</h3>
+    <p>
+      Are your users skipping over your carefully though out, highly engaging, well produced videos of talking heads reading your articles? Do they think they have the right to read the article for themselves? Well then we've got a solution for you. We call it <b>The Irritating Video Player&trade;</b>. <b>The Irritating Video Player&trade;</b> will drive unnatturally inflated views to your ad revenue producing videos in no time! Users won't be able to escape from your top tier <em>content</em>! No matter where they go, it follows! Try <b>The Irritating Video Player&trade;</b> on your major news
+      website or blog today!
+    </p>
+    <h3>User's Guide</h3>
+    <p>
+      To get the most out of your <b>The Irritating Video Player&trade;</b>, we recommend you follow these
+      simple guidelines. Before you know it, you'll be riding high on that ad revenue.
+    </p>
+
+    <ul>
+      <li>Include <b>The Irritating Video Player&trade;</b> on every page. Don't let the fact that you don't have a relevant video stop you! Pick one at random, your users will love it!</li>
+      <li>Ensure there is a preroll ad before every video. That way, by the time the user figures out the video is just a man in a suit reading the article below, it'll be too late!</li>
+      <li>Make sure to use a generous size for the sticky video. It's okay if it blocks important navigation elements, and even the text of the article! In fact, we recommend it! Let users know the video is all they need.</li>
+      <li>Add cheerful, full volume music and sound effects. Automatically playing music is a nice surprise for users. Remember how cool you were when you had music on your Myspace profile? Now your billion dollar media empire can capture some of that coolness.</li>
+      <li>Make sure to allow the user to pause the video, that's just common sense, but don't let them hide the player! Show them you mean business!</li>
+      <li>Don't waste time worrying about "engagement," it's made up by the marketing bean counters! If the video plays on a computer, you've got 'em!</li>
+      <li>Don't worry about users with limited data plans either! Your sweet video is worth it to them!</li>
+    </ul>
+
+    <p>
+      If you've followed these simple steps, you'll be rolling in the video preroll ad revenue in no time! Don't worry if your users complain, anyone smart enough to read is smart enough not to click on ads. They're not earning you anything anyway!
+    </p>
+
+    <h3>On a serious note</h3>
+
+    <p>Don't fucking do this. It wasn't cool in the gocities days, it wasn't cool in the Myspace days, it isn't cool now.</p>
+
+    <p>Automatically playing media of any type is actively user-hostile. If you have it on your site, and your site is not specifically a video site, you are abusing your users. At best it's frustrating, at worst it interferes with accessibility tools rendering your site unusable.</p>
+
+    <p>Here's what the W3C has to say about it:</p>
+
+    <blockquote cite="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-dis-audio.html">
+      Playing audio automatically when landing on a page may affect a screen reader user's ability to find the mechanism to stop it because they navigate by listening and automatically started sounds might interfere with that navigation. Therefore, we discourage the practice of automatically starting sounds (especially if they last more than 3 seconds), and encourage that the sound be started by an action initiated by the user after they reach the page, rather than requiring that the sound be stopped by an action of the user after they land on the page.
+    </blockquote>
+
+    <p>And the HTML spec:</p>
+
+    <blockquote cite="https://html.spec.whatwg.org/#attr-media-autoplay">
+      Authors are also encouraged to consider not using the automatic playback behavior at all, and instead to let the user agent wait for the user to start playback explicitly.
+    </blockquote>
+
+    <p>Apple and Google have also come out against autoplay, and both have planned to disable it in their browsers. Even Edge has a setting for it. A potentially useful feature of the html5 spec is being disabled at the browser level because of abusive practices.</p>
+
+    <p>If you're a web developer working for one of these companies, take a stand. Inform the higher ups of best practices, and the future of autoplay if it continues being abused. Don't implement it in the first place. If your company is dependent on ad revenue from autoplay pre-rolls, you are about to lose a lot of it.</p>
+
+    <p>If you're an editor, product manager, or anyone else who thought autoplay videos were a good idea, I hope this has been illuminating. Ask your users what they think of it, they'll use harsher words than I have. Let your designers and developers build clean and user friendly websites. Your users will thank you.</p>
+
+    <p style="padding: 500px 0">This page intentionally left blank.</p>
+  </div>
+  Made with <3 by <a href="http://astandke.com">Alex Standke</a>. Normally I'd put a github link down here but I really don't want anyone copying this awful pattern.
+
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script>
+    $('video').on('loadedmetadata', function() {
+      var height = $('.irritating-container').height()
+      $('.irritating-container').css('height', height)
+      $(window).scroll(function(){
+        var scrollPos = $(document).scrollTop();
+        $('video').toggleClass('irritating', scrollPos > height)
+      });
+    });
+  </script>
+</body>
+</html>
