@@ -1,0 +1,63 @@
+<html>
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131145592-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-131145592-1');</script>
+  <title>Alexander Standke</title>
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <style>body{max-width:800px;margin:20px auto;padding:0 15px;font-size:22px;line-height:1.4}a{text-decoration:none;color:#2874a6}a:hover{text-decoration:underline}@media (prefers-color-scheme:dark){body{background-color:#303333;color:#f2f2f2}a{color:#a4d0ed}}</style>
+</head>
+<body>
+<h1>How I Develop Software</h1>
+
+I build a platform integrating Cloud Foundry, Kubernetes, and Istio. I specifically work in
+networking. I work primarily in golang and yaml. I write more tests than code, and the results of
+my labor are usually only visible in the terminal. I am impatient and lazy.
+
+<h2>Philosophy</h2>
+
+<b>Goals:</b>
+
+<ul>
+  <li>fast as fuck</li>
+  <li>disposable</li>
+  <li>reproduceable</li>
+  <li>duplicatable</li>
+  <li>globally accessible</li>
+  <li>device agnostic</li>
+  <li>shareable with my teammates</li>
+  <li>functional for pair programming</li>
+</ul>
+
+<b>Non-goals:</b>
+
+<ul>
+  <li>accessible offline</li>
+  <li>compatible with GUI applications</li>
+</ul>
+
+<h2>Hardware</h2>
+
+<ul>
+  <li>e2-standard-8 VM on GCP (8 cores, 32gb RAM) -- the workstation</li>
+  <li>any computer (or, ipad, or phone) -- the client</a>
+</ul>
+
+<h2>Tools</h2>
+
+<ul>
+  <li>SSH on the client to reach the workstation</li>
+  <li><a href="https://github.com/luan/nvim">Luan's Neovim Distribution</a> for editing</li>
+  <li>tmux for window managing</li>
+  <li>chrome for web browsing on the client</li>
+  <li>concourse for rolling/duplicating the workstation</li>
+</ul>
+
+<h2>Repo</h2>
+
+I built <a href=https://github.com/cf-routing/devenv/>devenv</a>, a reproduceable set of scripts that builds
+a fully working development environment in GCP from zero in under 15 minutes, and a concourse
+pipeline to redeploy environments on demand.
+
+</body>
+</html>
