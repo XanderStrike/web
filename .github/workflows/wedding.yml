@@ -8,7 +8,7 @@ name: docker publish wedding
 on:
   push:
     branches: [ master ]
-    paths: [ wedding/ ]
+    paths: [ wedding/** ]
 
 jobs:
   push_to_registry:

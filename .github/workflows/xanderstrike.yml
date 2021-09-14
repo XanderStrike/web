@@ -8,7 +8,7 @@ name: docker publish xanderstrike
 on:
   push:
     branches: [ master ]
-    paths: [ xanderstrike/ ]
+    paths: [ xanderstrike/** ]
 
 jobs:
   push_to_registry:

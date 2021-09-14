@@ -8,7 +8,7 @@ name: docker publish astandke
 on:
   push:
     branches: [ master ]
-    paths: [ astandke/ ]
+    paths: [ astandke/** ]
 
 jobs:
   push_to_registry:
