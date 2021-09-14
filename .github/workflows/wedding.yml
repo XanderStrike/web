@@ -3,12 +3,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: docker publish xanderstrike
+name: docker publish wedding
 
 on:
   push:
     branches: [ master ]
-    paths: [ xanderstrike/ ]
+    paths: [ wedding/ ]
 
 jobs:
   push_to_registry:
@@ -27,6 +27,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: xanderstrike/
+          context: wedding/
           push: true
-          tags: xanderstrike/web:xanderstrike
+          tags: xanderstrike/web:wedding
