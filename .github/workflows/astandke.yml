@@ -29,6 +29,4 @@ jobs:
         with:
           context: astandke/
           push: true
-          tags:
-            - xanderstrike/web:astandke
-            - xanderstrike/web:latest
+          tags: xanderstrike/web:astandke
