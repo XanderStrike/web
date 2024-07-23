@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fair Road Tax Proposal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            <!-- font-weight: bold; -->
+        }
+        .explanation {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 5px solid #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>A Fair Road Tax</h1>
+        <p><strong>Problem:</strong> Bicyclists are thieves who use the road but do not pay road tax. EV owners also pay reduced fuel tax which starves roads of funding.</p>
+        <p><strong>Solution:</strong> Charge all road users based on the amount of road they use up calculated based on the industry standard definition of road wear.</p>
+        <form id="taxForm" onSubmit="return calculateTax()">
+            <label for="bikeTax">Bicycle Tax ($ per mile):</label>
+            <input type="number" id="bikeTax" name="bikeTax" step="0.000001" value="1.00" required>
+            
+            <button type="button" onclick="calculateTax()">Calculate Tax</button>
+        </form>
+        <div class="result" id="result"></div>
+        <div class="explanation" id="explanation">
+            <p>The fourth power rule used by civil engineers states that the damage caused to a road by a vehicle is proportional to the fourth power of the axle load of that vehicle. This means that even small increases in the weight of a vehicle can result in significantly greater road damage.</p>
+            <p>To calculate the tax for each vehicle based on the bike tax:</p>
+            <ol>
+                <li>Determine the axle load ratio: <code>axleLoadRatio = (Weight of vehicle) / (Weight of bicycle)</code></li>
+                <li>Apply the fourth power rule: <code>taxRatio = (axleLoadRatio)^4</code></li>
+                <li>Calculate the vehicle tax: <code>vehicleTax = bikeTax * taxRatio</code></li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function calculateTax() {
+            const bikeTax = parseFloat(document.getElementById('bikeTax').value);
+            const bikeWeight = 25; // Weight of the bike in pounds
+
+            if (isNaN(bikeTax) || bikeTax <= 0) {
+                alert('Please enter a valid positive number for the bike tax.');
+                return;
+            }
+
+            const vehicles = [
+                { name: 'Bicycle', weight: 25 },
+                { name: 'Cargo Bike (loaded)', weight: 150 },
+                { name: '600cc Motorcycle', weight: 400 },
+                { name: 'Sedan', weight: 3000 },
+                { name: 'Electric Sedan', weight: 4500 },
+                { name: 'Pickup Truck (empty)', weight: 5000 },
+                { name: '20\' Box Truck (loaded)', weight: 14500 },
+                { name: '18 Wheeler (loaded)', weight: 80000 }
+            ];
+
+            let resultText = '<table>';
+            vehicles.forEach(vehicle => {
+                const axleLoadRatio = vehicle.weight / bikeWeight;
+                const taxRatio = Math.pow(axleLoadRatio, 4);
+                const vehicleTax = bikeTax * taxRatio;
+            resultText += `<tr><td>${vehicle.name}</td><td>${vehicle.weight}lbs</td><td>$${vehicleTax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} per mile</td></tr>`;
+            });
+            resultText += '</table>';
+
+            resultText += '<p>Sounds fair to me! 🚲</p>'
+
+            document.getElementById('result').innerHTML = resultText;
+            document.getElementById('explanation').style.disply = 'block'; 
+
+            return false;
+        }
+    </script>
+</body>
+</html>
