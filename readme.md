@@ -1,6 +1,16 @@
-# xanderstrike/web
+# Xanderstrike Web Projects
 
-This repo contains all of my various websites. Each directory is built into a
-tag of the xanderstrike/web docker container!
+This repository contains all of my various websites. Each directory is built into a tag of the `xanderstrike/web` Docker container.
 
-i.e. astandke/ gets copied into xanderstrike/web:astandke
+## Structure
+
+- Each subdirectory represents a separate website project.
+- The contents of each directory are copied into a Docker image tag.
+
+## Example
+
+- The `astandke/` directory is built into the Docker image `xanderstrike/web:astandke`.
+
+## Usage
+
+To build and run a specific website, navigate to the desired directory and use Docker commands to build and run the container.
