@@ -4,6 +4,22 @@
   box-sizing: border-box;
 }
 
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.right {
+  float: right;
+}
+
+.banner {
+  padding-top: 50px;
+  text-align: center;
+  font-size: 50px;
+}
+
 body {
   background: linear-gradient(135deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
   background-size: 1400% 1400%;
