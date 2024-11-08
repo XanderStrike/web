@@ -1,187 +1,82 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
-.frame {
-  margin: 0 auto;
-  max-width: 100%; }
-  .frame:after {
-    content: "";
-    display: table;
-    clear: both; }
-
-[class*='bit-'] {
-  float: left;
-  padding: 0.3em; }
-
-.bit-1 {
-  width: 100%; }
-
-.bit-2 {
-  width: 50%; }
-
-.bit-3 {
-  width: 33.33333%; }
-
-.bit-4 {
-  width: 25%; }
-
-.bit-5 {
-  width: 20%; }
-
-.bit-6 {
-  width: 16.66667%; }
-
-.bit-7 {
-  width: 14.28571%; }
-
-.bit-8 {
-  width: 12.5%; }
-
-.bit-9 {
-  width: 11.11111%; }
-
-.bit-10 {
-  width: 10%; }
-
-.bit-11 {
-  width: 9.09091%; }
-
-.bit-12 {
-  width: 8.33333%; }
-
-.bit-25 {
-  width: 25%; }
-
-.bit-40 {
-  width: 40%; }
-
-.bit-60 {
-  width: 60%; }
-
-.bit-75 {
-  width: 75%; }
-
-@media (max-width: 30em) {
-  .bit-1 {
-    width: 100%; }
-  .bit-2 {
-    width: 100%; }
-  .bit-3 {
-    width: 100%; }
-  .bit-4 {
-    width: 100%; }
-  .bit-5 {
-    width: 100%; }
-  .bit-6 {
-    width: 100%; }
-  .bit-7 {
-    width: 100%; }
-  .bit-8 {
-    width: 100%; }
-  .bit-9 {
-    width: 100%; }
-  .bit-10 {
-    width: 100%; }
-  .bit-11 {
-    width: 100%; }
-  .bit-12 {
-    width: 100%; } }
-
-@media (min-width: 30em) and (max-width: 50em) {
-  .bit-4, .bit-6, .bit-8, .bit-10, .bit-12 {
-    width: 50%; }
-  .bit-1, .bit-2, .bit-3, .bit-5, .bit-7, .bit-9, .bit-11 {
-    width: 100%; } }
-
-@media (min-width: 50em) and (max-width: 68.75em) {
-  .bit-2, .bit-7 {
-    width: 100%; }
-  .bit-4, .bit-8, .bit-10, .bit-12 {
-    width: 50%; } }
-
-.box {
-  background: #FCD920;
-  font-family: "Futura", sans-serif;
-  font-size: 14px;
-  text-align: center;
-  padding: 20px 0; }
-  .box--new {
-    background: #87D37C; }
 body {
-    background: linear-gradient(135deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
-    background-size: 1400% 1400%;
-    animation: rainbow 10s ease infinite;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #fff;
+  background: linear-gradient(135deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+  background-size: 1400% 1400%;
+  animation: rainbow 10s ease infinite;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #fff;
 }
 
 @keyframes rainbow {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .header {
-    text-align: center;
-    margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .header h1 {
-    font-size: 3em;
-    margin: 0;
-    color: #ff69b4;
-    text-shadow: 2px 2px #000;
+  font-size: 3em;
+  margin: 0;
+  color: #ff69b4;
+  text-shadow: 2px 2px #000;
 }
 
 .header p {
-    font-size: 1.5em;
-    color: #fff;
+  font-size: 1.5em;
+  color: #fff;
 }
 
 .bio, .music, .contact {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 h2 {
-    font-size: 2em;
-    color: #ff1493;
-    border-bottom: 2px solid #fff;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+  font-size: 2em;
+  color: #ff1493;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 p {
-    font-size: 1.2em;
-    color: #fff;
-    line-height: 1.6;
+  font-size: 1.2em;
+  color: #fff;
+  line-height: 1.6;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 ul li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 ul li a {
-    text-decoration: none;
-    color: #00ffff;
+  text-decoration: none;
+  color: #00ffff;
 }
 
 ul li a:hover {
-    text-decoration: underline;
-    color: #ff69b4;
+  text-decoration: underline;
+  color: #ff69b4;
 }
