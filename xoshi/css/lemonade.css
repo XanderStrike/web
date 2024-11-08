@@ -109,11 +109,27 @@
   padding: 20px 0; }
   .box--new {
     background: #87D37C; }
+body {
+    background: linear-gradient(135deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+    background-size: 1400% 1400%;
+    animation: rainbow 10s ease infinite;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #fff;
+}
+
+@keyframes rainbow {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .header {
@@ -122,13 +138,15 @@
 }
 
 .header h1 {
-    font-size: 2.5em;
+    font-size: 3em;
     margin: 0;
+    color: #ff69b4;
+    text-shadow: 2px 2px #000;
 }
 
 .header p {
-    font-size: 1.2em;
-    color: #666;
+    font-size: 1.5em;
+    color: #fff;
 }
 
 .bio, .music, .contact {
@@ -136,16 +154,16 @@
 }
 
 h2 {
-    font-size: 1.8em;
-    color: #333;
-    border-bottom: 2px solid #ddd;
+    font-size: 2em;
+    color: #ff1493;
+    border-bottom: 2px solid #fff;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
 p {
-    font-size: 1em;
-    color: #555;
+    font-size: 1.2em;
+    color: #fff;
     line-height: 1.6;
 }
 
@@ -160,9 +178,10 @@ ul li {
 
 ul li a {
     text-decoration: none;
-    color: #007BFF;
+    color: #00ffff;
 }
 
 ul li a:hover {
     text-decoration: underline;
+    color: #ff69b4;
 }
