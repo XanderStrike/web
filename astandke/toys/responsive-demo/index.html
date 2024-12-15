@@ -1,122 +1,163 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Much Responsive Demo</title>
   <style>
-    /* Basic grid from w3schools of all things */
+    :root {
+      --column-bg: #ccffff;
+      --text-color: #333;
+    }
+
     * {
-        box-sizing: border-box;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .row::after {
-        content: "";
-        clear: both;
-        display: block;
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      padding: clamp(1rem, 3vw, 2rem);
+      color: var(--text-color);
     }
-    [class*="col-"] {
-        float: left;
-        padding: 15px;
-        margin: 15px;
-        width: 100%;
-        background-color: #ccffff;
+
+    .grid {
+      display: grid;
+      gap: clamp(1rem, 3vw, 2rem);
+      grid-template-columns: 1fr;
     }
-    @media only screen and (min-width: 768px) {
-        .col-1 {
-          width: 45%;
-        }
-        .col-2 {
-          width: 45%;
-        }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .column {
+      background-color: var(--column-bg);
+      padding: clamp(1rem, 3vw, 2rem);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .page-title {
+      margin-bottom: 2rem;
     }
 
     .wow {
-      display: block;
-      position: absolute;
+      position: fixed;
+      z-index: 100;
+      font-family: "Comic Sans MS", cursive;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      pointer-events: none;
+      transition: color 0.3s ease;
+      opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wow {
+        transition: none;
+      }
     }
   </style>
 </head>
 <body>
   <div class="wow"></div>
 
-  <h1>Simple Responsive Demo</h1>
+  <h1 class="page-title">Such Responsive Demo</h1>
 
-  <div class="row">
-    <div class="col-1">
+  <div class="grid">
+    <div class="column">
       <h1>Column 1</h1>
       <p>Schlitz next level cliche waistcoat vaporware tousled. Mlkshk selvage keffiyeh, hoodie ugh banjo retro before they sold out godard vexillologist. Intelligentsia kombucha slow-carb jean shorts, edison bulb cardigan chia bushwick hell of taxidermy gluten-free kinfolk sriracha. Shabby chic taxidermy affogato master cleanse tote bag ethical cloud bread asymmetrical before they sold out. Chambray brooklyn pop-up copper mug organic. Pinterest cornhole put a bird on it, wayfarers +1 snackwave everyday carry intelligentsia four loko raclette four dollar toast prism. Snackwave chillwave +1 vice, YOLO occupy tacos. Street art viral mumblecore pork belly, twee cold-pressed chambray celiac gochujang cloud bread bushwick thundercats chicharrones seitan kale chips. Pabst health goth celiac umami, trust fund butcher cornhole glossier VHS poutine bitters gluten-free meditation.</p>
     </div>
 
-    <div class="col-2">
+    <div class="column">
       <h1>Column 2</h1>
       <p>Pours smooth and creamy into the glass. The beer is an opaque and murky straw-amber color, topped with a thick and creamy foam head. Lacing is nice, with some glass-clinging action going on, and more than ample head retention. What's odd about the appearance is the amount of yeast in suspension. Even when chilled for days, the yeast is still hanging in there, when typically it would settle. Something is keeping it floating around, and it aint Mother Nature.</p>
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
   <script>
-    var words = [
+    const words = [
       'wow',
-      'wow',
-      'wow',
-      'wow',
-      'wow',
-      'such responsive',
-      'such responsive',
-      'such responsive',
       'such responsive',
       'made on macOS',
       'steve jobs',
-      'pivot',
+      'pivot to video',
       'mobile first',
       'who needs native',
       'responsive design',
       'have you heard of my startup',
-      '1 billion valuation',
+      'unicorn status',
       'the uber of responsive design',
-      'its good but change the color',
-      'ducking',
-      '"random number in jquery"',
-      'the bay',
-      'have we talked to the stakeholders',
-      'customers will love this',
-      'we got some great feedback',
+      'needs more AI',
+      'blockchain ready',
+      'web3 compatible',
+      'the bay area',
+      'stakeholder alignment',
+      'customer-centric',
       'how does it look on mobile',
-      'is there a node module',
+      'is there an npm package',
       'is it responsive?',
       'media queries',
       'min-width',
       'content is like water',
       'progressive enhancement',
-      "i'll pray to steve about it",
+      "let me ask ChatGPT",
       'RWD',
       'twelve columns',
-      'iPhone',
+      'iPhone 15 Pro Max',
       'viewport',
       'i only test in chrome',
-      'the desktop is dead'
-    ]
+      'the desktop is dead',
+      'needs more gradients',
+      'tailwind ready',
+      'zero dependencies',
+      'typescript first',
+      'cloud native',
+      'microservices',
+      'kubernetes ready',
+      'agile AF'
+    ];
 
-    $(window).resize(function() {
-      amaze($('.wow'));
-    });
+    const wow = document.querySelector('.wow');
+    let hasStarted = false;
 
-    function amaze(div) {
-      div.css('bottom', Math.floor(Math.random() * $(window).height()).toString() + 'px');
-      div.css('left', Math.floor(Math.random() * $(window).width() - 100).toString() + 'px');
-      div.css('font-size', Math.floor(Math.random() * 100 + 25).toString() + 'px');
-      div.css('color', getRandomColor());
-      div.css('transform', 'rotate(' + (Math.floor(Math.random() * 90) - 45).toString() + 'deg)');
-      div.html(words[Math.floor(Math.random() * words.length)]);
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    // http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
     function getRandomColor() {
-      var letters = '0123456789ABCDEF';
-      var color = '#';
-      for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
+      return `hsl(${getRandomNumber(0, 360)}deg, ${getRandomNumber(50, 100)}%, ${getRandomNumber(40, 60)}%)`;
     }
+
+    function updateWow() {
+      if (!hasStarted) {
+        wow.style.opacity = '1';
+        hasStarted = true;
+      }
+      
+      const viewportHeight = window.innerHeight;
+      const viewportWidth = window.innerWidth;
+      const fontSize = getRandomNumber(25, 125);
+      
+      wow.style.bottom = `${getRandomNumber(0, viewportHeight)}px`;
+      wow.style.left = `${getRandomNumber(0, Math.max(0, viewportWidth - fontSize * 5))}px`;
+      wow.style.fontSize = `${fontSize}px`;
+      wow.style.color = getRandomColor();
+      wow.style.transform = `rotate(${getRandomNumber(-45, 45)}deg)`;
+      wow.textContent = words[getRandomNumber(0, words.length - 1)];
+    }
+
+    window.addEventListener('resize', updateWow);
   </script>
 </body>
 </html>
