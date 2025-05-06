@@ -37,7 +37,7 @@
 <h1>Alexander Standke</h1>
 
 <!-- Add award preview element -->
-<img id="award-preview" data-src="award.jpg" alt="Award">
+<img id="award-preview" src="award.jpg" alt="Award">
 
 <p>
 I'm an <a href="award.jpg" id="award-link">award winning</a> developer working full time remote on Payments for <a href="https://www.shopify.com/careers">Shopify</a>.
@@ -82,17 +82,9 @@ I'm an <a href="award.jpg" id="award-link">award winning</a> developer working f
 <script>
   const preview = document.getElementById('award-preview');
   const link = document.getElementById('award-link');
-  let imageLoaded = false;
 
-  link.addEventListener('mouseenter', () => {
-    if (!imageLoaded) {
-      preview.src = preview.dataset.src;
-      imageLoaded = true;
-    }
-  });
-
-  // Move event listeners inside onload
-  preview.onload = () => {
+  // Set up event listeners when document is ready
+  document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('mousemove', (e) => {
       preview.classList.add('visible');
       preview.style.left = e.pageX + 'px';
@@ -102,7 +94,7 @@ I'm an <a href="award.jpg" id="award-link">award winning</a> developer working f
     link.addEventListener('mouseleave', () => {
       preview.classList.remove('visible');
     });
-  };
+  });
 
   // Prevent default link behavior
   link.addEventListener('click', (e) => {
