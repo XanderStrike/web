@@ -31,6 +31,17 @@
       visibility: visible;
       opacity: 1;
     }
+    
+    @keyframes shimmer {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(1.5); }
+      100% { filter: brightness(1); }
+    }
+    
+    .shimmer {
+      animation: shimmer 2s ease-in-out infinite;
+      /* display: inline-block; Ensures the filter applies correctly */
+    }
   </style>
 </head>
 <body>
@@ -100,6 +111,14 @@ I'm an <a href="award.jpg" id="award-link">award winning</a> developer working f
   link.addEventListener('click', (e) => {
     e.preventDefault();
   });
+
+  // Add shimmer effect to 'build silly things' link after 10 seconds
+  setTimeout(() => {
+    const sillyThingsLink = document.querySelector('a[href="https://toys.astandke.com"]');
+    if (sillyThingsLink) {
+      sillyThingsLink.classList.add('shimmer');
+    }
+  }, 10000);
 </script>
 </body>
 </html>
