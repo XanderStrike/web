@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <meta name="description" content="My public key.">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131145592-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-131145592-1');</script>
+  <title>Alexander Standke - Public Key</title>
+  <style>
+    body{max-width:800px;margin:20px auto;padding:0 15px;font-size:22px;line-height:1.4}
+    a{text-decoration:none;color:#2874a6}
+    a:hover{text-decoration:underline}
+    @media (prefers-color-scheme:dark){body{background-color:#303333;color:#f2f2f2}a{color:#a4d0ed}}
+    .copy-box {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      white-space: pre-wrap; /* Allows line breaks in the key */
+      word-break: break-all; /* Prevents long strings from overflowing */
+    }
+    .copy-box:hover {
+      background-color: #e0e0e0;
+    }
+    @media (prefers-color-scheme:dark){
+      .copy-box{background-color:#404343;border-color:#555;color:#f2f2f2}
+      .copy-box:hover{background-color:#505353}
+    }
+    .feedback {
+      font-size: 16px;
+      color: green;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Public Key</h1>
+  <p>Here is my public SSH key. You can click the box below to copy it to your clipboard.</p>
+  <div id="pubkey-box" class="copy-box" title="Click to copy">Loading key...</div>
+  <span id="pubkey-feedback" class="feedback"></span>
+  <p><a href="astandke.pub" download>Download the public key file</a></p>
+
+  <h2>Add to authorized_keys</h2>
+  <p>Click the box below to copy a command that will download and add this key to your <code>~/.ssh/authorized_keys</code> file:</p>
+  <div id="command-box" class="copy-box" title="Click to copy">curl -s https://astandke.com/astandke.pub >> ~/.ssh/authorized_keys</div>
+  <span id="command-feedback" class="feedback"></span>
+
+  <p><a href="/">Back to home</a></p>
+
+  <script>
+    function copyToClipboard(text, feedbackElement) {
+      navigator.clipboard.writeText(text).then(function() {
+        feedbackElement.textContent = 'Copied!';
+        setTimeout(() => { feedbackElement.textContent = ''; }, 2000);
+      }, function(err) {
+        feedbackElement.textContent = 'Failed to copy.';
+        console.error('Async: Could not copy text: ', err);
+      });
+    }
+
+    const pubkeyBox = document.getElementById('pubkey-box');
+    const pubkeyFeedback = document.getElementById('pubkey-feedback');
+    const commandBox = document.getElementById('command-box');
+    const commandFeedback = document.getElementById('command-feedback');
+
+    fetch('astandke.pub')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(text => {
+        pubkeyBox.textContent = text.trim();
+      })
+      .catch(error => {
+        pubkeyBox.textContent = 'Error loading public key.';
+        console.error('Error fetching public key:', error);
+      });
+
+    pubkeyBox.addEventListener('click', function() {
+      if (pubkeyBox.textContent !== 'Loading key...' && pubkeyBox.textContent !== 'Error loading public key.') {
+        copyToClipboard(this.textContent, pubkeyFeedback);
+      }
+    });
+
+    commandBox.addEventListener('click', function() {
+      copyToClipboard(this.textContent, commandFeedback);
+    });
+  </script>
+</body>
+</html>
