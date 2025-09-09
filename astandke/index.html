@@ -14,7 +14,6 @@
     a:hover{text-decoration:underline}
     @media (prefers-color-scheme:dark){body{background-color:#303333;color:#f2f2f2}a{color:#a4d0ed}}
     
-    /* Updated styles for floating award */
     #award-preview {
       position: fixed;
       pointer-events: none;
@@ -31,24 +30,10 @@
       visibility: visible;
       opacity: 1;
     }
-    
-    @keyframes shimmer {
-      0% { filter: brightness(1); }
-      50% { filter: brightness(1.5); }
-      100% { filter: brightness(1); }
-    }
-    
-    .shimmer {
-      animation: shimmer 2s ease-in-out infinite;
-      /* display: inline-block; Ensures the filter applies correctly */
-    }
   </style>
 </head>
 <body>
 <h1>Alexander Standke</h1>
-
-<!-- Add award preview element -->
-<img id="award-preview" src="award.jpg" alt="Award">
 
 <p>
 I'm an <a href="award.jpg" id="award-link">award winning</a> developer working full time remote on Payments for <a href="https://www.shopify.com/careers">Shopify</a>.
@@ -58,43 +43,29 @@ I'm an <a href="award.jpg" id="award-link">award winning</a> developer working f
   In my free time, I ride motorcycles and bicycles, take pictures, 
     operate a sweet <a href="/server.html">media server</a>, 
     play videogames (especially <a target="_blank" href="https://shake.astandke.com">vintage FPS</a>),
-    compete with <a target="_blank" href="https://blog.astandke.com">combat robots</a>, 
-  and <a target="_blank" href="https://toys.astandke.com">build
-  silly things</a>.
+    and compete with <a target="_blank" href="https://blog.astandke.com">combat robots</a>.
 </p>
 
 <p>
-  Check out my <a target="_blank" href="https://github.com/XanderStrike">GitHub</a>, notable personal projects include:
+  Check out my <a target="_blank"
+  href="https://github.com/XanderStrike">GitHub</a>.
+  <a href="https://github.com/XanderStrike/GazelleUI">GazelleUI</a> and
+  <a href="https://github.com/XanderStrike/goplaxt">Plaxt</a> are my most
+  notable projects, but you can see all my public works displayed 
+  <a href="https://toys.astandke.com">in the toybox</a>.
 </p>
-
-<ul>
-  <li>
-    <a target="_blank" href="https://github.com/XanderStrike/GazelleUI">GazelleUI</a>:
-    A web front end for Gazelle tracker API. Users can search Gazelle based music sites and add torrents
-    with a single click. Built with Flask and Skeleton.
-  </li>
-  <li>
-    <a target="_blank" href="https://github.com/XanderStrike/caketop-theater">Caketop Theater</a>:
-    Web application for playing Movies, TV shows, and Music. Scrapes metadata and can automatically
-    convert media for playback. Like Plex or Muvee. Running on Rails with Bootstrap for good looks.
-  </li>
-  <li>
-    <a target="_blank" href="https://plaxt.astandke.com">Plaxt</a>:
-    A simple webhooks-based approach to scrobbling plays from Plex Media Server to Trakt.tv. Other 
-    solutions involve complicated plugins and linux knowhow, this one requires clicking a button
-    and copying a link.
-  </li>
-</ul>
 
 <p>
   Here is my <a href="astandke_resume.pdf">Resume</a>, and here's my <a href="pubkey.html">Public Key</a>. Just in case.
 </p>
 
+<img id="award-preview" src="award.jpg" alt="Award">
 <script>
   const preview = document.getElementById('award-preview');
   const link = document.getElementById('award-link');
-
-  // Set up event listeners when document is ready
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+  });
   document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('mousemove', (e) => {
       preview.classList.add('visible');
@@ -106,19 +77,6 @@ I'm an <a href="award.jpg" id="award-link">award winning</a> developer working f
       preview.classList.remove('visible');
     });
   });
-
-  // Prevent default link behavior
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-  });
-
-  // Add shimmer effect to 'build silly things' link after 10 seconds
-  setTimeout(() => {
-    const sillyThingsLink = document.querySelector('a[href="https://toys.astandke.com"]');
-    if (sillyThingsLink) {
-      sillyThingsLink.classList.add('shimmer');
-    }
-  }, 10000);
 </script>
 </body>
 </html>

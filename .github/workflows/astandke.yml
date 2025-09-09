@@ -30,10 +30,3 @@ jobs:
           context: astandke/
           push: true
           tags: xanderstrike/web:astandke
-
-      - name: Trigger Deploy
-        id: request
-        uses: tyrrrz/action-http-request@master
-        with:
-          url: https://portainer.cryobank.cc/api/webhooks/9ea4a0c6-3b20-4cad-a451-865462a5913f
-          method: POST
