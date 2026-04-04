@@ -9,7 +9,7 @@
 
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content="Alex & Taylor's wedding website!"/>
-	<meta property="og:image" content="images/img_bg_2.jpg"/>
+	<meta property="og:image" content="images/img_bg_2.webp"/>
 	<meta property="og:url" content=""/>
 	<meta property="og:site_name" content=""/>
 	<meta property="og:description" content=""/>
@@ -36,17 +36,61 @@
 	<div id="page">
 
 <style>
+.thanks-banner {
+    background-image:url(images/wedding.webp);
+		height: 100vh;
+		background-position: center !important;
+}
+@media (max-width: 700px) {
+		.thanks-banner {
+				background-image:url(images/wedding_phone.webp);
+		}
+}
+.thanks-banner h1, .thanks-banner h2 {
+		text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
 .annoying-special-banner {
-    background-image:url(images/img_bg_2.jpg);
+    background-image:url(images/img_bg_2.webp);
 		height: 100vh;
 		background-position: center !important;
 }
 @media (max-width: 700px) {
 		.annoying-special-banner {
-				background-image:url(images/phone_bg.jpg);
+				background-image:url(images/phone_bg.webp);
 		}
 }
 </style>
+
+	<header class="cover thanks-banner">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Thanks for coming!</h1>
+							<h2 id="time-since">X years Y months Z days and counting!</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="container">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center heading animate-box">
+					<p>
+						While we were officially married on April 24, 2021, our
+						celebration was postponed until 2022. We're so glad we
+						waited and were able to party with you all!
+					</p>
+					<p>The original invite website is preserved below for posterity.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<header id="header" class="cover annoying-special-banner">
 		<div class="overlay"></div>
@@ -91,7 +135,7 @@
 			<div class="couple-wrap animate-box">
 				<div class="couple-half">
 					<div class="groom">
-						<img src="images/groom.jpg" alt="groom" class="img-responsive">
+						<img src="images/groom.webp" alt="groom" class="img-responsive">
 					</div>
 					<div class="desc-groom">
 						<h3>Alex Standke</h3>
@@ -101,7 +145,7 @@
 				<p class="heart text-center"><i class="icon-heart2"></i></p>
 				<div class="couple-half">
 					<div class="bride">
-						<img src="images/bride.jpg" alt="groom" class="img-responsive">
+						<img src="images/bride.webp" alt="groom" class="img-responsive">
 					</div>
 					<div class="desc-bride">
 						<h3>Taylor Wasko</h3>
@@ -112,7 +156,7 @@
 		</div>
 	</div>
 
-	<div id="event" class="bg" style="background-image:url(images/img_bg_3.jpg);">
+	<div id="event" class="bg" style="background-image:url(images/img_bg_3.webp);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
@@ -163,7 +207,7 @@
 				<div class="col-md-12 col-md-offset-0">
 					<ul class="timeline animate-box">
 						<li class="animate-box">
-							<div class="timeline-badge" style="background-image:url(images/couple-1.jpg);"></div>
+							<div class="timeline-badge" style="background-image:url(images/couple-1.webp);"></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h3 class="timeline-title">First Met</h3>
@@ -175,7 +219,7 @@
 							</div>
 						</li>
 						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge" style="background-image:url(images/couple-2.jpg);"></div>
+							<div class="timeline-badge" style="background-image:url(images/couple-2.webp);"></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h3 class="timeline-title">First Date</h3>
@@ -187,7 +231,7 @@
 							</div>
 						</li>
 						<li class="animate-box">
-							<div class="timeline-badge" style="background-image:url(images/couple-3.jpg);"></div>
+							<div class="timeline-badge" style="background-image:url(images/couple-3.webp);"></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h3 class="timeline-title">In A Relationship</h3>
@@ -199,7 +243,7 @@
 							</div>
 						</li>
 						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge" style="background-image:url(images/couple-4.jpg);"></div>
+							<div class="timeline-badge" style="background-image:url(images/couple-4.webp);"></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h3 class="timeline-title">First Vacation</h3>
@@ -211,7 +255,7 @@
 							</div>
 						</li>
 						<li class="animate-box">
-							<div class="timeline-badge" style="background-image:url(images/couple-5.jpg);"></div>
+							<div class="timeline-badge" style="background-image:url(images/couple-5.webp);"></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h3 class="timeline-title">Engagement</h3>
@@ -228,7 +272,7 @@
 		</div>
 	</div>
 
-	<div id="started" class="bg" style="background-image:url(images/img_bg_4.jpg);">
+	<div id="started" class="bg" style="background-image:url(images/img_bg_4.webp);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row animate-box">

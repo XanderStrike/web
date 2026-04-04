@@ -77,11 +77,38 @@
 		}
 	};
 
+	// Update time since wedding counter
+	const updateTimeSince = () => {
+		const el = document.getElementById('time-since');
+		if (!el) return;
+
+		const weddingDate = new Date(2021, 3, 24); // April 24, 2021
+		const now = new Date();
+
+		let years = now.getFullYear() - weddingDate.getFullYear();
+		let months = now.getMonth() - weddingDate.getMonth();
+		let days = now.getDate() - weddingDate.getDate();
+
+		if (days < 0) {
+			months--;
+			const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+			days += prevMonth.getDate();
+		}
+
+		if (months < 0) {
+			years--;
+			months += 12;
+		}
+
+		el.textContent = `${years} year${years !== 1 ? 's' : ''} ${months} month${months !== 1 ? 's' : ''} ${days} day${days !== 1 ? 's' : ''} and counting!`;
+	};
+
 	// Initialize
 	document.addEventListener('DOMContentLoaded', () => {
 		goToTop();
 		contentWayPoint();
 		loaderPage();
+		updateTimeSince();
 	});
 
 }());
