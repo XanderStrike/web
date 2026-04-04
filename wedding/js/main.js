@@ -1,194 +1,87 @@
 ;(function () {
-	
 	'use strict';
 
-	var mobileMenuOutsideClick = function() {
+	// Add .js class to html for progressive enhancement
+	document.documentElement.classList.add('js');
 
-		$(document).click(function (e) {
-	    var container = $("#fh5co-offcanvas, .js-fh5co-nav-toggle");
-	    if (!container.is(e.target) && container.has(e.target).length === 0) {
+	// Easing function (easeOutExpo replacement)
+	const easeOutExpo = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 
-	    	if ( $('body').hasClass('offcanvas') ) {
-
-    			$('body').removeClass('offcanvas');
-    			$('.js-fh5co-nav-toggle').removeClass('active');
-	    	}
-	    }
-		});
-
-	};
-
-
-	var offcanvasMenu = function() {
-
-		$('#page').prepend('<div id="fh5co-offcanvas" />');
-		$('#page').prepend('<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle fh5co-nav-white"><i></i></a>');
-		var clone1 = $('.menu-1 > ul').clone();
-		$('#fh5co-offcanvas').append(clone1);
-		var clone2 = $('.menu-2 > ul').clone();
-		$('#fh5co-offcanvas').append(clone2);
-
-		$('#fh5co-offcanvas .has-dropdown').addClass('offcanvas-has-dropdown');
-		$('#fh5co-offcanvas')
-			.find('li')
-			.removeClass('has-dropdown');
-
-		// Hover dropdown menu on mobile
-		$('.offcanvas-has-dropdown').mouseenter(function(){
-			var $this = $(this);
-
-			$this
-				.addClass('active')
-				.find('ul')
-				.slideDown(500, 'easeOutExpo');				
-		}).mouseleave(function(){
-
-			var $this = $(this);
-			$this
-				.removeClass('active')
-				.find('ul')
-				.slideUp(500, 'easeOutExpo');				
-		});
-
-
-		$(window).resize(function(){
-
-			if ( $('body').hasClass('offcanvas') ) {
-
-    			$('body').removeClass('offcanvas');
-    			$('.js-fh5co-nav-toggle').removeClass('active');
+	// Animate scroll to top
+	const goToTop = () => {
+		const btn = document.querySelector('.js-gotop');
+		const topEl = document.querySelector('.js-top');
+		
+		if (btn) {
+			btn.addEventListener('click', (e) => {
+				e.preventDefault();
+				const start = window.scrollY;
+				const duration = 500;
+				const startTime = performance.now();
 				
-	    	}
-		});
-	};
-
-
-	var burgerMenu = function() {
-
-		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
-			var $this = $(this);
-
-
-			if ( $('body').hasClass('overflow offcanvas') ) {
-				$('body').removeClass('overflow offcanvas');
-			} else {
-				$('body').addClass('overflow offcanvas');
-			}
-			$this.toggleClass('active');
-			event.preventDefault();
-
-		});
-	};
-
-
-
-	var contentWayPoint = function() {
-		var i = 0;
-		$('.animate-box').waypoint( function( direction ) {
-
-			if( direction === 'down' && !$(this.element).hasClass('animated-fast') ) {
-				
-				i++;
-
-				$(this.element).addClass('item-animate');
-				setTimeout(function(){
-
-					$('body .animate-box.item-animate').each(function(k){
-						var el = $(this);
-						setTimeout( function () {
-							var effect = el.data('animate-effect');
-							if ( effect === 'fadeIn') {
-								el.addClass('fadeIn animated-fast');
-							} else if ( effect === 'fadeInLeft') {
-								el.addClass('fadeInLeft animated-fast');
-							} else if ( effect === 'fadeInRight') {
-								el.addClass('fadeInRight animated-fast');
-							} else {
-								el.addClass('fadeInUp animated-fast');
-							}
-
-							el.removeClass('item-animate');
-						},  k * 200, 'easeInOutExpo' );
-					});
+				const animate = (currentTime) => {
+					const elapsed = currentTime - startTime;
+					const progress = Math.min(elapsed / duration, 1);
+					const eased = easeOutExpo(progress);
+					window.scrollTo(0, start * (1 - eased));
 					
-				}, 100);
-				
-			}
+					if (progress < 1) {
+						requestAnimationFrame(animate);
+					}
+				};
+				requestAnimationFrame(animate);
+			});
+		}
 
-		} , { offset: '85%' } );
+		// Show/hide button based on scroll
+		if (topEl) {
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > 200) {
+					topEl.classList.add('active');
+				} else {
+					topEl.classList.remove('active');
+				}
+			}, { passive: true });
+		}
 	};
 
+	// Scroll-triggered animations (replaces waypoints)
+	const contentWayPoint = () => {
+		const animateBoxes = document.querySelectorAll('.animate-box');
+		
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry, index) => {
+				if (entry.isIntersecting && !entry.target.classList.contains('animated-fast')) {
+					const el = entry.target;
+					const effect = el.dataset.animateEffect || 'fadeIn';
+					
+					setTimeout(() => {
+						el.classList.add(effect, 'animated-fast');
+					}, index * 100);
+					
+					observer.unobserve(el);
+				}
+			});
+		}, { threshold: 0.15 });
 
-	var dropdown = function() {
-
-		$('.has-dropdown').mouseenter(function(){
-
-			var $this = $(this);
-			$this
-				.find('.dropdown')
-				.css('display', 'block')
-				.addClass('animated-fast fadeInUpMenu');
-
-		}).mouseleave(function(){
-			var $this = $(this);
-
-			$this
-				.find('.dropdown')
-				.css('display', 'none')
-				.removeClass('animated-fast fadeInUpMenu');
-		});
-
+		animateBoxes.forEach(box => observer.observe(box));
 	};
 
-
-	var goToTop = function() {
-
-		$('.js-gotop').on('click', function(event){
-			
-			event.preventDefault();
-
-			$('html, body').animate({
-				scrollTop: $('html').offset().top
-			}, 500, 'easeInOutExpo');
-			
-			return false;
-		});
-
-		$(window).scroll(function(){
-
-			var $win = $(window);
-			if ($win.scrollTop() > 200) {
-				$('.js-top').addClass('active');
-			} else {
-				$('.js-top').removeClass('active');
-			}
-
-		});
-	
+	// Loader fade out
+	const loaderPage = () => {
+		const loader = document.querySelector('.fh5co-loader');
+		if (loader) {
+			loader.style.transition = 'opacity 0.5s';
+			loader.style.opacity = '0';
+			setTimeout(() => loader.remove(), 500);
+		}
 	};
 
-
-	// Loading page
-	var loaderPage = function() {
-		$(".fh5co-loader").fadeOut("slow");
-	};
-
-	// Parallax
-	var parallax = function() {
-		$(window).stellar();
-	};
-
-	
-	$(function(){
-		mobileMenuOutsideClick();
-		parallax();
-		offcanvasMenu();
-		burgerMenu();
-		contentWayPoint();
-		dropdown();
+	// Initialize
+	document.addEventListener('DOMContentLoaded', () => {
 		goToTop();
+		contentWayPoint();
 		loaderPage();
 	});
-
 
 }());
