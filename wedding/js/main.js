@@ -69,7 +69,7 @@
 
 	// Loader fade out
 	const loaderPage = () => {
-		const loader = document.querySelector('.fh5co-loader');
+		const loader = document.querySelector('.loader');
 		if (loader) {
 			loader.style.transition = 'opacity 0.5s';
 			loader.style.opacity = '0';
